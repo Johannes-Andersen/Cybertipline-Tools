@@ -1,5 +1,6 @@
 export * from './types/transactions/CancelReport.js';
 export * from './types/transactions/FinishReport.js';
+export * from './types/transactions/GetStatus.js';
 export * from './types/transactions/Report.js';
 export * from './types/transactions/SubmitFileDetails.js';
 export * from './types/transactions/UploadFile.js';

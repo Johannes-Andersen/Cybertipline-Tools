@@ -2,16 +2,16 @@
   "name": "cybertipline-tools",
   "version": "0.0.1",
   "description": "Unofficial Types and Utilities for working with the CyberTipline API",
-  "homepage": "https://github.com/Johannes-Andersen/Cybertipline-Tools",
+  "homepage": "https://github.com/Johannes-Andersen/CyberTipline-Tools",
   "bugs": {
-    "url": "https://github.com/Johannes-Andersen/Cybertipline-Tools/issues"
+    "url": "https://github.com/Johannes-Andersen/CyberTipline-Tools/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Johannes-Andersen/Cybertipline-Tools.git"
+    "url": "git+https://github.com/Johannes-Andersen/CyberTipline-Tools.git"
   },
   "author": "Johannes Andersen (https://johand.dev)",
-  "keywords": ["cybertipline", "NCMEC", "utils"],
+  "keywords": ["CyberTipline", "NCMEC", "utils"],
   "license": "MIT",
   "files": ["dist"],
   "type": "module",
