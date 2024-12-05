@@ -13,20 +13,32 @@
   "author": "Johannes Andersen (https://johand.dev)",
   "keywords": ["CyberTipline", "NCMEC", "utils"],
   "license": "MIT",
-  "files": ["dist"],
-  "type": "module",
-  "main": "dist/index.js",
   "packageManager": "pnpm@9.14.4",
   "engines": {
     "node": "22.12.0",
     "pnpm": "9"
   },
+  "type": "module",
+  "files": ["dist"],
+  "exports": {
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "changeset": "changeset",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run lint && pnpm run format && pnpm run check && pnpm run type-check && pnpm run build && pnpm run check-exports",
-    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check-exports": "attw --pack .",
     "type-check": "tsc --noEmit",
     "lint": "biome lint .",
     "lint:fix": "biome lint --write .",
@@ -39,6 +51,7 @@
     "@arethetypeswrong/cli": "0.17.0",
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "2.27.10",
+    "tsup": "8.3.5",
     "typescript": "5.7.2"
   }
 }
