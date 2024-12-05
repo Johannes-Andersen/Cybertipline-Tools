@@ -39,3 +39,6 @@ export * from './transactions/UploadFile.js';
 
 // Constants
 export * from './Constants.js';
+
+// Client
+export * from './Client.js';
