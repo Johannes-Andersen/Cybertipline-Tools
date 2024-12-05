@@ -21,13 +21,15 @@ import {
   ensureDesiredReportState,
   ensureSuccessResponse,
 } from '../utils/responseCode.js';
-import { parseResponse as parseCancelResponse } from './responseParsers/cancelReport.js';
-import { parseResponse as parseFinishResponse } from './responseParsers/finishReport.js';
-import { parseResponse as parseGetStatus } from './responseParsers/getStatus.js';
-import { parseResponseError } from './responseParsers/parseResponseError.js';
-import { parseResponse as parseSubmitFileDetailsResponse } from './responseParsers/submitFileDetails.js';
-import { parseResponse as parseSubmitResponse } from './responseParsers/submitReport.js';
-import { parseResponse as parseUploadResponse } from './responseParsers/uploadFile.js';
+import {
+  parseCancelResponse,
+  parseFinishResponse,
+  parseGetStatus,
+  parseResponseError,
+  parseSubmitFileDetailsResponse,
+  parseSubmitResponse,
+  parseUploadResponse,
+} from './responseParsers.js';
 
 /**
  * Client for interacting with the CyberTipline API

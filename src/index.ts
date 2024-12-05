@@ -8,3 +8,4 @@ export * from './utils/xmlResponseParser.js';
 
 // Client
 export * from './client/Client.js';
+export * from './client/responseParsers.js';
