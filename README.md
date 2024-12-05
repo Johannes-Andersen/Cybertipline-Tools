@@ -119,9 +119,8 @@ try {
 - [ ] Unit Tests
 
 🔮 **Possible Future Plans**
-- [ ] E2E testing against test endpoint
+- [ ] E2E testing against running CyberTipline test environment
 - [ ] XSD schema to TypeScript generation
-- [ ] CLI tools for report management
 
 ## License
 
