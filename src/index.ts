@@ -2,4 +2,4 @@
 export * from './types/index.js';
 
 // Utils
-export * from './utils/codeToErrors.js';
+export * from './utils/responseCode.js';
