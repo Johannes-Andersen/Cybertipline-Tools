@@ -11,15 +11,9 @@
     "url": "git+https://github.com/Johannes-Andersen/Cybertipline-Tools.git"
   },
   "author": "Johannes Andersen (https://johand.dev)",
-  "keywords": [
-    "cybertipline",
-    "NCMEC",
-    "utils"
-  ],
+  "keywords": ["cybertipline", "NCMEC", "utils"],
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "type": "module",
   "main": "dist/index.js",
   "packageManager": "pnpm@9.14.4",

@@ -8,7 +8,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "ignore": ["dist", "node_modules"]
   },
   "organizeImports": {
     "enabled": true
