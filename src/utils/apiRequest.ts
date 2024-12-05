@@ -1,17 +1,25 @@
+import { ResponseCode } from '../types';
+
 /**
  * Generic API request handler with authentication and status code handling
  */
 export async function makeApiRequest<T>(
   url: string,
   auth: string,
-  options: RequestInit = {},
+  parser: {
+    response: (xmlData: string) => T;
+    error: (xmlError: string) => {
+      responseCode: number;
+      responseDescription: string;
+    };
+  },
+  fetchOptions: RequestInit = {},
 ): Promise<{ data: T; requestId: string }> {
-  console.log({ auth, url });
   const response = await fetch(url, {
-    ...options,
+    ...fetchOptions,
     headers: {
       Authorization: `Basic ${auth}`,
-      ...options.headers,
+      ...fetchOptions.headers,
     },
   });
 
@@ -21,9 +29,16 @@ export async function makeApiRequest<T>(
     let errorMessage = `Request failed with http status ${response.status}`;
 
     try {
-      // TODO: Add XML parsing logic
       const errorResponse = await response.text();
-      errorMessage += ` (${errorResponse})`;
+      const errorData = parser.error(errorResponse);
+      if (errorData) {
+        const resolved = ResponseCode[errorData.responseCode];
+        if (resolved) {
+          errorMessage += ` - ${ResponseCode[errorData.responseCode]}`;
+        } else {
+          errorMessage += ` (${errorData.responseCode}: ${errorData.responseDescription})`;
+        }
+      }
     } catch (_e) {
       // ignore errors when parsing the error message
     }
@@ -31,15 +46,10 @@ export async function makeApiRequest<T>(
     throw new Error(`${errorMessage} (Request-ID: ${requestId})`);
   }
 
-  // TODO: Add XML parsing logic
-  // const text = await response.text();
-  // For now return mock response
-  const mockResponse = {
-    responseCode: 0,
-  } as T;
+  const data = parser.response(await response.text());
 
   return {
-    data: mockResponse,
+    data,
     requestId,
   };
 }

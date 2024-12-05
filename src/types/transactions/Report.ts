@@ -56,5 +56,5 @@ export interface ReportResponse {
   /** A description of the response code. */
   responseDescription: string;
   /** Report ID assigned to the submitted report. */
-  reportId: string;
+  reportId: number;
 }

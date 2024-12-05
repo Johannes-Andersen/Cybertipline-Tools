@@ -21,6 +21,13 @@ import {
   ensureDesiredReportState,
   ensureSuccessResponse,
 } from '../utils/responseCode.js';
+import { parseResponse as parseCancelResponse } from './responseParsers/cancelReport.js';
+import { parseResponse as parseFinishResponse } from './responseParsers/finishReport.js';
+import { parseResponse as parseGetStatus } from './responseParsers/getStatus.js';
+import { parseResponseError } from './responseParsers/parseResponseError.js';
+import { parseResponse as parseSubmitFileDetailsResponse } from './responseParsers/submitFileDetails.js';
+import { parseResponse as parseSubmitResponse } from './responseParsers/submitReport.js';
+import { parseResponse as parseUploadResponse } from './responseParsers/uploadFile.js';
 
 /**
  * Client for interacting with the CyberTipline API
@@ -55,11 +62,10 @@ export class Client {
     const response = await makeApiRequest<GetStatusResponse>(
       `${this.baseUrl}/status`,
       this.auth,
+      { response: parseGetStatus, error: parseResponseError },
     );
 
-    // Validate the response code
     ensureSuccessResponse(response.data.responseCode);
-
     return response;
   }
 
@@ -73,6 +79,7 @@ export class Client {
     const response = await makeApiRequest<ReportResponse>(
       `${this.baseUrl}/submit`,
       this.auth,
+      { response: parseSubmitResponse, error: parseResponseError },
       {
         method: 'POST',
         // TODO: XML conversion
@@ -93,13 +100,18 @@ export class Client {
   async uploadFile(
     upload: UploadFile,
   ): Promise<ResponseWrapper<UploadFileResponse>> {
+    const formData = new FormData();
+
+    formData.append('id', upload.id.toString());
+    formData.append('file', upload.file);
+
     const response = await makeApiRequest<UploadFileResponse>(
       `${this.baseUrl}/upload`,
       this.auth,
+      { response: parseUploadResponse, error: parseResponseError },
       {
         method: 'POST',
-        // TODO: XML conversion
-        body: JSON.stringify(upload),
+        body: formData,
       },
     );
 
@@ -119,6 +131,7 @@ export class Client {
     const response = await makeApiRequest<SubmitFileDetailsResponse>(
       `${this.baseUrl}/fileinfo`,
       this.auth,
+      { response: parseSubmitFileDetailsResponse, error: parseResponseError },
       {
         method: 'POST',
         // TODO: XML conversion
@@ -139,13 +152,17 @@ export class Client {
   async finishReport(
     finish: FinishReport,
   ): Promise<ResponseWrapper<FinishReportResponse>> {
+    const formData = new FormData();
+
+    formData.append('id', finish.id.toString());
+
     const response = await makeApiRequest<FinishReportResponse>(
       `${this.baseUrl}/finish`,
       this.auth,
+      { response: parseFinishResponse, error: parseResponseError },
       {
         method: 'POST',
-        // TODO: XML conversion
-        body: JSON.stringify(finish),
+        body: formData,
       },
     );
 
@@ -162,13 +179,17 @@ export class Client {
   async cancelReport(
     cancel: CancelReport,
   ): Promise<ResponseWrapper<CancelReportResponse>> {
+    const formData = new FormData();
+
+    formData.append('id', cancel.id.toString());
+
     const response = await makeApiRequest<CancelReportResponse>(
       `${this.baseUrl}/retract`,
       this.auth,
+      { response: parseCancelResponse, error: parseResponseError },
       {
         method: 'POST',
-        // TODO: XML conversion
-        body: JSON.stringify(cancel),
+        body: formData,
       },
     );
 

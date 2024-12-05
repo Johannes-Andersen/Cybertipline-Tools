@@ -59,5 +59,5 @@ export interface SubmitFileDetailsResponse {
   /** A description of the response code. */
   responseDescription: string;
   /** The report ID to which this response is related. */
-  reportId: string;
+  reportId: number;
 }

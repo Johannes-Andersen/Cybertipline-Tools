@@ -42,7 +42,8 @@
         }
       },
       "suspicious": {
-        "useErrorMessage": "error"
+        "useErrorMessage": "error",
+        "noConsole": "error"
       }
     }
   },
