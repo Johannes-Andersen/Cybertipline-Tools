@@ -15,10 +15,9 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
-    "module": "NodeNext",
-    "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
+    "module": "preserve",
+    "noEmit": true,
     "declaration": true
-  }
+  },
+  "exclude": ["dist"]
 }
