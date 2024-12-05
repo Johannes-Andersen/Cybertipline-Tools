@@ -1,6 +1,6 @@
 {
   "name": "cybertipline-tools",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Unofficial Types and Utilities for working with the CyberTipline API",
   "homepage": "https://github.com/Johannes-Andersen/Cybertipline-Tools",
   "bugs": {
@@ -23,6 +23,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "changeset": "changeset",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run lint && pnpm run format && pnpm run check && pnpm run type-check && pnpm run build && pnpm run check-exports",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
