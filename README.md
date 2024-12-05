@@ -22,9 +22,10 @@ The package exports ESM modules, so you may need to do some extra configuration 
   - We document all our APIs and types with JSDoc comments to give you inline documentation in your editor.
 
 Coming soon™️:
-- [ ] API client, ability to call the CyberTipline APIs
-- [ ] JSON to XML converter. Convert JSON objects to XML strings for use in the CyberTipline API.
-- [ ] Support batch reporting
+- [ ] API client, ability to call the CyberTipline APIs.
+  - [ ] JSON to XML converter. Convert JSON objects to XML strings for use in the CyberTipline API.
+- [ ] XML to JSON conversion for responses from the CyberTipline API.
+- [ ] Support batch reporting.
 
 ## License
 
