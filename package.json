@@ -1,0 +1,42 @@
+{
+  "name": "cybertipline-tools",
+  "version": "0.0.1",
+  "description": "Unofficial Types and Utilities for working with the CyberTipline API",
+  "homepage": "https://github.com/Johannes-Andersen/Cybertipline-Tools",
+  "bugs": {
+    "url": "https://github.com/Johannes-Andersen/Cybertipline-Tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johannes-Andersen/Cybertipline-Tools.git"
+  },
+  "author": "Johannes Andersen (https://johand.dev)",
+  "keywords": ["cybertipline", "NCMEC", "utils"],
+  "license": "MIT",
+  "files": ["dist"],
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "22.12.0",
+    "pnpm": "9"
+  },
+  "scripts": {
+    "build": "tsc",
+    "local-release": "changeset version && changeset publish",
+    "prepublishOnly": "pnpm run lint && pnpm run format && pnpm run check && pnpm run type-check && pnpm run build && pnpm run check-exports",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "type-check": "tsc --noEmit",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write ."
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.17.0",
+    "@biomejs/biome": "1.9.4",
+    "@changesets/cli": "2.27.10",
+    "typescript": "5.7.2"
+  }
+}

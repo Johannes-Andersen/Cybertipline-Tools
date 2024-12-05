@@ -1,0 +1,68 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": []
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "noUselessStringConcat": "error",
+        "useDateNow": "error"
+      },
+      "correctness": {
+        "noUndeclaredDependencies": "error",
+        "noUndeclaredVariables": "error",
+        "noUnusedImports": "error"
+      },
+      "performance": {
+        "useTopLevelRegex": "error"
+      },
+      "style": {
+        "useNodejsImportProtocol": "error",
+        "useConsistentArrayType": {
+          "level": "error",
+          "options": { "syntax": "generic" }
+        }
+      },
+      "suspicious": {
+        "useErrorMessage": "error"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "lineEnding": "lf",
+      "quoteProperties": "asNeeded"
+    }
+  },
+  "json": {
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "lineEnding": "lf"
+    }
+  }
+}

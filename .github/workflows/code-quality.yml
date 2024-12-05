@@ -1,0 +1,43 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.0.0
+      - uses: actions/setup-node@v4.1.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --prefer-offline
+
+      - name: Run format
+        run: pnpm run format
+
+      - name: Run lint
+        run: pnpm run lint
+
+      - name: Run check
+        run: pnpm run check
+
+      - name: Run type-check
+        run: pnpm run type-check
+
+      - name: Run build
+        run: pnpm run build
+      
+      - name: Check exports
+        run: pnpm run check-exports
