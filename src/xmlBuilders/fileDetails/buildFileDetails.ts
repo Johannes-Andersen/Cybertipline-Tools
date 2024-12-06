@@ -13,7 +13,10 @@ export const buildFileDetails = (
   return builder.build({
     [keyName]: {
       '@_type': fileDetails.type,
-      nameValuePair: fileDetails.valuePair,
+      nameValuePair: fileDetails.valuePair.map(({ name, value }) => ({
+        name,
+        value,
+      })),
     },
   });
 };
