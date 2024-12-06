@@ -18,8 +18,7 @@ const builder = new XMLBuilder({
 });
 
 export const buildVictim = (victim: Victim, keyName = 'victim'): string => {
-  const { estimatedLocation, deviceId, ipCaptureEvent, victimPerson, ...rest } =
-    victim;
+  const { estimatedLocation, deviceId, ipCaptureEvent, victimPerson } = victim;
 
   const deviceIds = deviceId?.map(
     (e) => parser.parse(buildDeviceId(e)).deviceId,
@@ -34,11 +33,18 @@ export const buildVictim = (victim: Victim, keyName = 'victim'): string => {
 
   return builder.build({
     [keyName]: {
-      deviceId: deviceIds,
-      ipCaptureEvent: ipCaptureEvents,
-      estimatedLocation: estimatedLocations,
       victimPerson: person,
-      ...rest,
+      espIdentifier: victim.espIdentifier,
+      espService: victim.espService,
+      screenName: victim.screenName,
+      displayName: victim.displayName,
+      profileUrl: victim.profileUrl,
+      ipCaptureEvent: ipCaptureEvents,
+      deviceId: deviceIds,
+      schoolName: victim.schoolName,
+      priorCTReports: victim.priorCTReports,
+      estimatedLocation: estimatedLocations,
+      additionalInfo: victim.additionalInfo,
     },
   });
 };

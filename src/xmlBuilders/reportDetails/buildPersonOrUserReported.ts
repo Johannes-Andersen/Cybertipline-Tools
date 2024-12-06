@@ -26,7 +26,6 @@ export const buildPersonOrUserReported = (
     personOrUserReportedPerson,
     deviceId,
     ipCaptureEvent,
-    ...rest
   } = personOrUserReported;
 
   const deviceIds = deviceId?.map(
@@ -44,11 +43,20 @@ export const buildPersonOrUserReported = (
 
   return builder.build({
     [keyName]: {
-      deviceId: deviceIds,
-      ipCaptureEvent: ipCaptureEvents,
-      estimatedLocation: estimatedLocations,
       personOrUserReportedPerson: person,
-      ...rest,
+      vehicleDescription: personOrUserReported.vehicleDescription,
+      espIdentifier: personOrUserReported.espIdentifier,
+      espService: personOrUserReported.espService,
+      screenName: personOrUserReported.screenName,
+      displayName: personOrUserReported.displayName,
+      profileUrl: personOrUserReported.profileUrl,
+      ipCaptureEvent: ipCaptureEvents,
+      deviceId: deviceIds,
+      thirdPartyUserReported: personOrUserReported.thirdPartyUserReported,
+      priorCTReports: personOrUserReported.priorCTReports,
+      groupIdentifier: personOrUserReported.groupIdentifier,
+      estimatedLocation: estimatedLocations,
+      additionalInfo: personOrUserReported.additionalInfo,
     },
   });
 };

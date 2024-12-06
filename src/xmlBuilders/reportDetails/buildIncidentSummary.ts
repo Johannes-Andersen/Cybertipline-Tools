@@ -13,12 +13,14 @@ export const buildIncidentSummary = (
 ): string =>
   builder.build({
     [keyName]: {
-      ...incidentSummary,
+      incidentType: incidentSummary.incidentType,
+      escalateToHighPriority: incidentSummary.escalateToHighPriority,
       reportAnnotations: Object.fromEntries(
         Object.entries(incidentSummary.reportAnnotations ?? {})
           .filter(([_, value]) => value)
           .map(([key]) => [key, '']),
       ),
       incidentDateTime: incidentSummary.incidentDateTime.toISOString(),
+      incidentDateTimeDescription: incidentSummary.incidentDateTimeDescription,
     },
   });

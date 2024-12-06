@@ -28,7 +28,6 @@ export const buildIntendedRecipient = (
     intendedRecipientPerson,
     accountPermanentlyDisabled,
     accountTemporarilyDisabled,
-    ...rest
   } = intendedRecipient;
 
   const deviceIds = deviceId?.map(
@@ -46,19 +45,16 @@ export const buildIntendedRecipient = (
 
   return builder.build({
     [keyName]: {
-      deviceId: deviceIds,
-      ipCaptureEvent: ipCaptureEvents,
-      estimatedLocation: estimatedLocations,
       intendedRecipientPerson: person,
-      accountPermanentlyDisabled: accountPermanentlyDisabled
-        ? {
-            '#text': !!accountPermanentlyDisabled,
-            '@_disabledDate':
-              typeof accountPermanentlyDisabled === 'object'
-                ? accountPermanentlyDisabled?.disabledDate?.toISOString()
-                : undefined,
-          }
-        : undefined,
+      espIdentifier: intendedRecipient.espIdentifier,
+      espService: intendedRecipient.espService,
+      screenName: intendedRecipient.screenName,
+      displayName: intendedRecipient.displayName,
+      profileUrl: intendedRecipient.profileUrl,
+      ipCaptureEvent: ipCaptureEvents,
+      deviceId: deviceIds,
+      priorCTReports: intendedRecipient.priorCTReports,
+      groupIdentifier: intendedRecipient.groupIdentifier,
       accountTemporarilyDisabled: accountTemporarilyDisabled
         ? {
             '#text': !!accountTemporarilyDisabled,
@@ -72,7 +68,17 @@ export const buildIntendedRecipient = (
                 : undefined,
           }
         : undefined,
-      ...rest,
+      accountPermanentlyDisabled: accountPermanentlyDisabled
+        ? {
+            '#text': !!accountPermanentlyDisabled,
+            '@_disabledDate':
+              typeof accountPermanentlyDisabled === 'object'
+                ? accountPermanentlyDisabled?.disabledDate?.toISOString()
+                : undefined,
+          }
+        : undefined,
+      estimatedLocation: estimatedLocations,
+      additionalInfo: intendedRecipient.additionalInfo,
     },
   });
 };

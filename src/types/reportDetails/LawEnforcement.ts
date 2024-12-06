@@ -1,3 +1,4 @@
+import type { Country } from '../Constants/Country.js';
 import type { ContactPerson } from '../common/Person.js';
 
 /**
@@ -22,6 +23,6 @@ export interface LawEnforcement {
     | boolean
     | {
         /** The country associated with this report from which legal process was received. */
-        fleaCountry: string;
+        fleaCountry: Country;
       };
 }

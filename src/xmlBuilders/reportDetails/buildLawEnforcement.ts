@@ -17,8 +17,7 @@ export const buildLawEnforcement = (
   lawEnforcement: LawEnforcement,
   keyName = 'lawEnforcement',
 ): string => {
-  const { officerContact, servedLegalProcessInternational, ...rest } =
-    lawEnforcement;
+  const { officerContact, servedLegalProcessInternational } = lawEnforcement;
 
   const person = officerContact
     ? parser.parse(buildContactPerson(officerContact, 'officerContact'))
@@ -27,7 +26,11 @@ export const buildLawEnforcement = (
 
   return builder.build({
     [keyName]: {
+      agencyName: lawEnforcement.agencyName,
+      caseNumber: lawEnforcement.caseNumber,
       officerContact: person,
+      reportedToLe: lawEnforcement.reportedToLe,
+      servedLegalProcessDomestic: lawEnforcement.servedLegalProcessDomestic,
       servedLegalProcessInternational: servedLegalProcessInternational
         ? {
             '#text': !!servedLegalProcessInternational,
@@ -37,7 +40,6 @@ export const buildLawEnforcement = (
                 : undefined,
           }
         : undefined,
-      ...rest,
     },
   });
 };
