@@ -3,9 +3,9 @@ import type { Peer2peerIncident } from '../../types';
 import { buildIpCapture } from '../common/buildIpCapture';
 
 const parser = new XMLParser({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
   allowBooleanAttributes: true,
-  attributeNamePrefix: '@_',
 });
 
 const builder = new XMLBuilder({

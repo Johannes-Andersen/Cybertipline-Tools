@@ -3,9 +3,9 @@ import type { Reporter } from '../../types';
 import { buildContactPerson, buildPerson } from '../common/buildPerson';
 
 const parser = new XMLParser({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
   allowBooleanAttributes: true,
-  attributeNamePrefix: '@_',
 });
 
 const builder = new XMLBuilder({

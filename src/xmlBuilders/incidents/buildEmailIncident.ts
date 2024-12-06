@@ -3,9 +3,9 @@ import type { EmailIncident } from '../../types';
 import { buildEmail } from '../common/buildEmail';
 
 const parser = new XMLParser({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
   allowBooleanAttributes: true,
-  attributeNamePrefix: '@_',
 });
 
 const builder = new XMLBuilder({

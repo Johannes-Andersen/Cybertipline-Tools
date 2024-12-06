@@ -14,17 +14,17 @@ import { buildReporter } from '../reportDetails/buildReporter';
 import { buildVictim } from '../reportDetails/buildVictim';
 
 const parser = new XMLParser({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
   allowBooleanAttributes: true,
-  attributeNamePrefix: '@_',
 });
 
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
   suppressEmptyNode: true,
   processEntities: false,
-  suppressBooleanAttributes: false,
 });
 
 export const buildReport = (report: Report, keyName = 'report'): string => {

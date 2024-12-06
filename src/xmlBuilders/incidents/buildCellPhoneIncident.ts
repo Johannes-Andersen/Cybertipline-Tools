@@ -3,9 +3,9 @@ import type { CellPhoneIncident } from '../../types';
 import { buildPhone } from '../common/buildPhone';
 
 const parser = new XMLParser({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
   allowBooleanAttributes: true,
-  attributeNamePrefix: '@_',
 });
 
 const builder = new XMLBuilder({

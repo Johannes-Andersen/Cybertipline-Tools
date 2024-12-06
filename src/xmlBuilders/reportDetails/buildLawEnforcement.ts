@@ -3,8 +3,9 @@ import type { LawEnforcement } from '../../types';
 import { buildContactPerson } from '../common/buildPerson';
 
 const parser = new XMLParser({
-  ignoreAttributes: false,
   attributeNamePrefix: '@_',
+  ignoreAttributes: false,
+  allowBooleanAttributes: true,
 });
 
 const builder = new XMLBuilder({

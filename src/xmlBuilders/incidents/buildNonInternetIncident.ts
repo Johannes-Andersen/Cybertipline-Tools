@@ -3,9 +3,9 @@ import type { NonInternetIncident } from '../../types';
 import { buildAddress } from '../common/buildAddress';
 
 const parser = new XMLParser({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
   allowBooleanAttributes: true,
-  attributeNamePrefix: '@_',
 });
 
 const builder = new XMLBuilder({
