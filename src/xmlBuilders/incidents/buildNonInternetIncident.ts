@@ -11,22 +11,19 @@ const parser = new XMLParser({
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildNonInternetIncident = (
   nonInternetIncident: NonInternetIncident,
   keyName = 'nonInternetIncident',
-): string => {
-  const { incidentAddress, ...rest } = nonInternetIncident;
-
-  const addresses = incidentAddress?.map(
-    (e) => parser.parse(buildAddress(e)).address,
-  );
-
-  return builder.build({
+): string =>
+  builder.build({
     [keyName]: {
-      ...rest,
-      incidentAddress: addresses,
+      locationName: nonInternetIncident.locationName,
+      incidentAddress: nonInternetIncident.incidentAddress?.map(
+        (e) => parser.parse(buildAddress(e)).address,
+      ),
+      additionalInfo: nonInternetIncident.additionalInfo,
     },
   });
-};

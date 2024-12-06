@@ -11,20 +11,19 @@ const parser = new XMLParser({
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildEmailIncident = (
   emailIncident: EmailIncident,
   keyName = 'emailIncident',
-): string => {
-  const { emailAddress, ...rest } = emailIncident;
-
-  const emails = emailAddress?.map((e) => parser.parse(buildEmail(e)).email);
-
-  return builder.build({
+): string =>
+  builder.build({
     [keyName]: {
-      ...rest,
-      emailAddress: emails,
+      emailAddress: emailIncident.emailAddress?.map(
+        (e) => parser.parse(buildEmail(e)).email,
+      ),
+      content: emailIncident.content,
+      additionalInfo: emailIncident.additionalInfo,
     },
   });
-};

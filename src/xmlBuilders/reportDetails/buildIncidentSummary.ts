@@ -2,8 +2,9 @@ import { XMLBuilder } from 'fast-xml-parser';
 import type { IncidentSummary } from '../../types';
 
 const builder = new XMLBuilder({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
-  suppressEmptyNode: true,
+  suppressBooleanAttributes: false,
 });
 
 export const buildIncidentSummary = (

@@ -11,22 +11,20 @@ const parser = new XMLParser({
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildPeer2peerIncident = (
   peer2peerIncident: Peer2peerIncident,
   keyName = 'peer2peerIncident',
-): string => {
-  const { ipCaptureEvent, ...rest } = peer2peerIncident;
-
-  const ipCaptureEvents = ipCaptureEvent?.map(
-    (e) => parser.parse(buildIpCapture(e)).ipCaptureEvent,
-  );
-
-  return builder.build({
+): string =>
+  builder.build({
     [keyName]: {
-      ...rest,
-      ipCaptureEvent: ipCaptureEvents,
+      client: peer2peerIncident.client,
+      ipCaptureEvent: peer2peerIncident.ipCaptureEvent?.map(
+        (e) => parser.parse(buildIpCapture(e)).ipCaptureEvent,
+      ),
+      fileNames: peer2peerIncident.fileNames,
+      additionalInfo: peer2peerIncident.additionalInfo,
     },
   });
-};

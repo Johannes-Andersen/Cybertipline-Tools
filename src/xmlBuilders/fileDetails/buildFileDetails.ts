@@ -4,6 +4,7 @@ import type { FileDetails } from '../../types';
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildFileDetails = (

@@ -9,23 +9,22 @@ const parser = new XMLParser({
 });
 
 const builder = new XMLBuilder({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildCellPhoneIncident = (
   cellPhoneIncident: CellPhoneIncident,
   keyName = 'cellPhoneIncident',
-): string => {
-  const { phoneNumber, ...rest } = cellPhoneIncident;
-
-  const phone = phoneNumber
-    ? parser.parse(buildPhone(phoneNumber)).phone
-    : undefined;
-
-  return builder.build({
+): string =>
+  builder.build({
     [keyName]: {
-      phone,
-      ...rest,
+      phoneNumber: cellPhoneIncident.phoneNumber
+        ? parser.parse(buildPhone(cellPhoneIncident.phoneNumber)).phone
+        : undefined,
+      latitude: cellPhoneIncident.latitude,
+      longitude: cellPhoneIncident.longitude,
+      additionalInfo: cellPhoneIncident.additionalInfo,
     },
   });
-};

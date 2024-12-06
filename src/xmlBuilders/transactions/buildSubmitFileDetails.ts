@@ -14,6 +14,7 @@ const parser = new XMLParser({
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildSubmitFileDetails = (
