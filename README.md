@@ -115,7 +115,6 @@ try {
 
 🚧 **Todo**
 - [ ] Schema validation (Zod?)
-- [ ] Unit Tests
 
 🔮 **Possible Future Plans**
 - [ ] E2E testing against running CyberTipline test environment
