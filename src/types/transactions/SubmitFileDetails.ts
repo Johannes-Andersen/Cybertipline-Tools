@@ -35,7 +35,7 @@ export interface SubmitFileDetails {
   /** The relevance or relation of the file to the report. Unless specified otherwise, a file is "Reported" by default. */
   fileRelevance?: FileRelevance;
   /** Tags to describe the file. */
-  fileAnnotations?: Array<FileAnnotations>;
+  fileAnnotations?: Partial<Record<FileAnnotations, boolean>>;
   /** A categorization from the ESP-designated categorization scale. */
   industryClassification?: IndustryClassification;
   /** The original binary hash value of the file at the time it was uploaded by the reported user or person (prior to any potential modification by the reporter). */

@@ -20,3 +20,15 @@ export * from './incidents/buildNonInternetIncident.js';
 export * from './incidents/buildOnlineGamingIncident.js';
 export * from './incidents/buildPeer2peerIncident.js';
 export * from './incidents/buildWebPageIncident.js';
+
+// Report details builders
+export * from './reportDetails/buildIncidentSummary.js';
+export * from './reportDetails/buildIntendedRecipient.js';
+export * from './reportDetails/buildLawEnforcement.js';
+export * from './reportDetails/buildPersonOrUserReported.js';
+export * from './reportDetails/buildReporter.js';
+export * from './reportDetails/buildVictim.js';
+
+// Transactions builders
+export * from './transactions/buildReport.js';
+export * from './transactions/buildSubmitFileDetails.js';

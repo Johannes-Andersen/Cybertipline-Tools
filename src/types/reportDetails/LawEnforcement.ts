@@ -21,6 +21,7 @@ export interface LawEnforcement {
   servedLegalProcessInternational?:
     | boolean
     | {
+        /** The country associated with this report from which legal process was received. */
         fleaCountry: string;
       };
 }
