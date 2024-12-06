@@ -3,6 +3,7 @@ import type { IncidentSummary } from '../../types';
 
 const builder = new XMLBuilder({
   ignoreAttributes: false,
+  suppressEmptyNode: true,
 });
 
 export const buildIncidentSummary = (
@@ -12,6 +13,11 @@ export const buildIncidentSummary = (
   builder.build({
     [keyName]: {
       ...incidentSummary,
+      reportAnnotations: Object.fromEntries(
+        Object.entries(incidentSummary.reportAnnotations ?? {})
+          .filter(([_, value]) => value)
+          .map(([key]) => [key, '']),
+      ),
       incidentDateTime: incidentSummary.incidentDateTime.toISOString(),
     },
   });

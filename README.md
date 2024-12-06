@@ -114,12 +114,12 @@ try {
 ## Development Status
 
 🚧 **Todo**
-- [ ] Batch reporting support
 - [ ] Schema validation (Zod?)
 - [ ] Unit Tests
 
 🔮 **Possible Future Plans**
 - [ ] E2E testing against running CyberTipline test environment
+- [ ] Batch reporting support
 - [ ] XSD schema to TypeScript generation
 
 ## License

@@ -21,6 +21,7 @@ import {
   ensureDesiredReportState,
   ensureSuccessResponse,
 } from '../utils/responseCode.js';
+import { buildReport, buildSubmitFileDetails } from '../xmlBuilders/index.js';
 import {
   parseCancelResponse,
   parseFinishResponse,
@@ -84,8 +85,7 @@ export class Client {
       { response: parseSubmitResponse, error: parseResponseError },
       {
         method: 'POST',
-        // TODO: XML conversion
-        body: JSON.stringify(report),
+        body: buildReport(report),
       },
     );
 
@@ -136,8 +136,7 @@ export class Client {
       { response: parseSubmitFileDetailsResponse, error: parseResponseError },
       {
         method: 'POST',
-        // TODO: XML conversion
-        body: JSON.stringify(details),
+        body: buildSubmitFileDetails(details),
       },
     );
 

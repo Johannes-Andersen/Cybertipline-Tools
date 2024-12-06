@@ -16,7 +16,8 @@ const builder = new XMLBuilder({
 });
 
 export const buildPerson = (person: Person, keyName = 'person'): string => {
-  const { dateOfBirth, email, phone, address, ...rest } = person;
+  const { dateOfBirth, email, phone, address, firstName, lastName, ...rest } =
+    person;
 
   const emails = email?.map((e) => parser.parse(buildEmail(e)).email);
   const addresses = address?.map((e) => parser.parse(buildAddress(e)).address);
@@ -24,8 +25,10 @@ export const buildPerson = (person: Person, keyName = 'person'): string => {
 
   return builder.build({
     [keyName]: {
-      dateOfBirth: dateOfBirth?.toISOString(),
+      firstName,
+      lastName,
       email: emails,
+      dateOfBirth: dateOfBirth?.toISOString(),
       address: addresses,
       phone: phones,
       ...rest,
@@ -37,7 +40,7 @@ export const buildContactPerson = (
   person: ContactPerson,
   keyName = 'contactPerson',
 ): string => {
-  const { email, phone, address, ...rest } = person;
+  const { email, phone, address, firstName, lastName, ...rest } = person;
 
   const emails = email?.map((e) => parser.parse(buildEmail(e)).email);
   const addresses = address?.map((e) => parser.parse(buildAddress(e)).address);
@@ -45,6 +48,8 @@ export const buildContactPerson = (
 
   return builder.build({
     [keyName]: {
+      firstName,
+      lastName,
       email: emails,
       address: addresses,
       phone: phones,
