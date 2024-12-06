@@ -25,6 +25,13 @@ describe('buildReport', () => {
         incidentDateTimeDescription: 'Multiple incidents over past week',
       },
       incidentDetails: {
+        newsgroupIncidents: [
+          {
+            additionalInfo: 'Multiple incidents reported over the past week',
+            content: 'Harmful content shared via newsgroup',
+            name: 'newsgroup1',
+          },
+        ],
         webPageIncidents: [
           {
             url: ['https://example.com/harmful-content'],
