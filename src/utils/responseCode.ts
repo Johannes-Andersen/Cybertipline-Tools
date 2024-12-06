@@ -1,10 +1,9 @@
-import { ResponseCode } from '../types/Constants.js';
+import { ResponseCode } from '../types/Constants/ResponseCode';
 
 /**
  * A mapping between `ResponseCode` value and their corresponding
  * descriptive message and a matching HTTP status code.
  */
-
 export const errorDetailsByCode: Record<
   ResponseCode | number,
   { message: string; httpStatus: number }

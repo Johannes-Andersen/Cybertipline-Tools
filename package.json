@@ -35,6 +35,8 @@
   "module": "./dist/index.js",
   "scripts": {
     "build": "tsup",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "changeset": "changeset",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run lint && pnpm run format && pnpm run check && pnpm run type-check && pnpm run build && pnpm run check-exports",
@@ -47,11 +49,17 @@
     "check": "biome check .",
     "check:fix": "biome check --write ."
   },
+  "dependencies": {
+    "fast-xml-parser": "4.5.0"
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.17.0",
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "2.27.10",
+    "@types/node": "22.10.1",
+    "@vitest/coverage-v8": "2.1.8",
     "tsup": "8.3.5",
-    "typescript": "5.7.2"
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
   }
 }
