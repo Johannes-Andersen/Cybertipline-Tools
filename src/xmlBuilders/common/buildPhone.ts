@@ -4,6 +4,7 @@ import type { Phone } from '../../types';
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildPhone = (phone: Phone, keyName = 'phone'): string =>

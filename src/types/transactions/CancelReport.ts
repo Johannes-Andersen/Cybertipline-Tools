@@ -1,4 +1,4 @@
-import type { ResponseCode } from '../Constants.js';
+import type { ResponseCode } from '../Constants/ResponseCode.js';
 
 /**
  * POST properties for the Cancel Report endpoint.

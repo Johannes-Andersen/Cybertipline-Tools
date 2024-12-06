@@ -1,7 +1,11 @@
 import { XMLBuilder } from 'fast-xml-parser';
 import type { DeviceId } from '../../types';
 
-const builder = new XMLBuilder();
+const builder = new XMLBuilder({
+  attributeNamePrefix: '@_',
+  ignoreAttributes: false,
+  suppressBooleanAttributes: false,
+});
 
 export const buildDeviceId = (
   deviceId: DeviceId,
@@ -9,7 +13,9 @@ export const buildDeviceId = (
 ): string =>
   builder.build({
     [keyName]: {
-      ...deviceId,
+      idType: deviceId.idType,
+      idValue: deviceId.idValue,
+      eventName: deviceId.eventName,
       dateTime: deviceId.dateTime?.toISOString(),
     },
   });

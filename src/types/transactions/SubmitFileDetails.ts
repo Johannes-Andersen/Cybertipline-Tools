@@ -1,9 +1,7 @@
-import type {
-  FileAnnotations,
-  FileRelevance,
-  IndustryClassification,
-  ResponseCode,
-} from '../Constants.js';
+import type { ResponseCode } from '../../index.js';
+import type { FileAnnotations } from '../Constants/FileAnnotations.js';
+import type { FileRelevance } from '../Constants/FileRelevance.js';
+import type { IndustryClassification } from '../Constants/IndustryClassification.js';
 import type { DeviceId } from '../common/DeviceId.js';
 import type { IpCapture } from '../common/IpCapture.js';
 import type { FileDetails } from '../fileDetails/FileDetails.js';

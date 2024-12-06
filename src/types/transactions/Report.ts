@@ -1,4 +1,4 @@
-import type { ResponseCode } from '../Constants.js';
+import type { ResponseCode } from '../Constants/ResponseCode';
 import type { CellPhoneIncident } from '../incidents/CellPhoneIncident.js';
 import type { ChatImIncident } from '../incidents/ChatImIncident.js';
 import type { EmailIncident } from '../incidents/EmailIncident.js';

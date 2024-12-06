@@ -1,4 +1,5 @@
-import type { IncidentType, ReportAnnotation } from '../Constants.js';
+import type { IncidentType } from '../Constants/IncidentType';
+import type { ReportAnnotation } from '../Constants/ReportAnnotation';
 
 /**
  * General incident information.

@@ -1,12 +1,12 @@
 import { XMLParser } from 'fast-xml-parser';
 
-type ValidationRule<T> = {
+export type ValidationRule<T> = {
   key: keyof T;
   type: 'string' | 'number';
   required: boolean;
 };
 
-type ValidationConfig<T> = {
+export type ValidationConfig<T> = {
   rootKey: string;
   rules: Array<ValidationRule<T>>;
 };

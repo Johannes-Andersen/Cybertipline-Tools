@@ -2,7 +2,9 @@ import { XMLBuilder } from 'fast-xml-parser';
 import type { IpCapture } from '../../types';
 
 const builder = new XMLBuilder({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildIpCapture = (
@@ -11,7 +13,10 @@ export const buildIpCapture = (
 ): string =>
   builder.build({
     [keyName]: {
-      ...ipCapture,
+      ipAddress: ipCapture.ipAddress,
+      eventName: ipCapture.eventName,
       dateTime: ipCapture.dateTime?.toISOString(),
+      possibleProxy: ipCapture.possibleProxy,
+      port: ipCapture.port,
     },
   });

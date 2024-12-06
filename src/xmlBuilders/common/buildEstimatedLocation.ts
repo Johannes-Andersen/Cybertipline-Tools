@@ -4,6 +4,7 @@ import type { EstimatedLocation } from '../../types';
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildEstimatedLocation = (
@@ -16,7 +17,9 @@ export const buildEstimatedLocation = (
     [keyName]: {
       '@_verified': verified,
       '@_timestamp': timestamp?.toISOString(),
-      ...rest,
+      city: location.city,
+      region: location.region,
+      countryCode: location.countryCode,
     },
   });
 };

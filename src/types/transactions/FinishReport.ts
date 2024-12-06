@@ -1,4 +1,4 @@
-import type { ResponseCode } from '../Constants.js';
+import type { ResponseCode } from '../Constants/ResponseCode';
 
 /**
  * POST properties for the Finish Report endpoint.

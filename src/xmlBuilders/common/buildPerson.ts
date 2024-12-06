@@ -5,33 +5,33 @@ import { buildEmail } from './buildEmail';
 import { buildPhone } from './buildPhone';
 
 const parser = new XMLParser({
+  attributeNamePrefix: '@_',
   ignoreAttributes: false,
   allowBooleanAttributes: true,
-  attributeNamePrefix: '@_',
 });
 
 const builder = new XMLBuilder({
   attributeNamePrefix: '@_',
   ignoreAttributes: false,
+  suppressBooleanAttributes: false,
 });
 
 export const buildPerson = (person: Person, keyName = 'person'): string => {
-  const { dateOfBirth, email, phone, address, firstName, lastName, ...rest } =
-    person;
+  const { phone, email, address } = person;
 
+  const phones = phone?.map((e) => parser.parse(buildPhone(e)).phone);
   const emails = email?.map((e) => parser.parse(buildEmail(e)).email);
   const addresses = address?.map((e) => parser.parse(buildAddress(e)).address);
-  const phones = phone?.map((e) => parser.parse(buildPhone(e)).phone);
 
   return builder.build({
     [keyName]: {
-      firstName,
-      lastName,
-      email: emails,
-      dateOfBirth: dateOfBirth?.toISOString(),
-      address: addresses,
+      firstName: person.firstName,
+      lastName: person.lastName,
       phone: phones,
-      ...rest,
+      email: emails,
+      address: addresses,
+      age: person.age,
+      dateOfBirth: person.dateOfBirth?.toISOString().split('T')[0],
     },
   });
 };
@@ -40,20 +40,19 @@ export const buildContactPerson = (
   person: ContactPerson,
   keyName = 'contactPerson',
 ): string => {
-  const { email, phone, address, firstName, lastName, ...rest } = person;
+  const { phone, email, address } = person;
 
+  const phones = phone?.map((e) => parser.parse(buildPhone(e)).phone);
   const emails = email?.map((e) => parser.parse(buildEmail(e)).email);
   const addresses = address?.map((e) => parser.parse(buildAddress(e)).address);
-  const phones = phone?.map((e) => parser.parse(buildPhone(e)).phone);
 
   return builder.build({
     [keyName]: {
-      firstName,
-      lastName,
+      firstName: person.firstName,
+      lastName: person.lastName,
+      phone: phones,
       email: emails,
       address: addresses,
-      phone: phones,
-      ...rest,
     },
   });
 };
