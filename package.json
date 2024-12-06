@@ -48,7 +48,7 @@
     "check:fix": "biome check --write ."
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.17.0",
+    "@arethetypeswrong/cli": "0.17.1",
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "2.27.10",
     "tsup": "8.3.5",
