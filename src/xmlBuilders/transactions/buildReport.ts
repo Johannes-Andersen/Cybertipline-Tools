@@ -3,7 +3,7 @@ import type { Report } from '../../types';
 import { buildCellPhoneIncident } from '../incidents/buildCellPhoneIncident';
 import { buildChatImIncident } from '../incidents/buildChatImIncident';
 import { buildEmailIncident } from '../incidents/buildEmailIncident';
-import { builNewsgroupIncident } from '../incidents/buildNewsgroupIncident';
+import { buildNewsgroupIncident } from '../incidents/buildNewsgroupIncident';
 import { buildOnlineGamingIncident } from '../incidents/buildOnlineGamingIncident';
 import { buildWebPageIncident } from '../incidents/buildWebPageIncident';
 import { buildIncidentSummary } from '../reportDetails/buildIncidentSummary';
@@ -67,7 +67,7 @@ export const buildReport = (report: Report, keyName = 'report'): string => {
   const internetDetailsEntities = [
     webPageIncidents?.map((e) => parser.parse(buildWebPageIncident(e))),
     emailIncidents?.map((e) => parser.parse(buildEmailIncident(e))),
-    newsgroupIncidents?.map((e) => parser.parse(builNewsgroupIncident(e))),
+    newsgroupIncidents?.map((e) => parser.parse(buildNewsgroupIncident(e))),
     chatImIncidents?.map((e) => parser.parse(buildChatImIncident(e))),
     onlineGamingIncidents?.map((e) =>
       parser.parse(buildOnlineGamingIncident(e)),

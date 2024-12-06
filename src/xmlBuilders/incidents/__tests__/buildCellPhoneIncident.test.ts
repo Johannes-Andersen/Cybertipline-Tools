@@ -18,4 +18,16 @@ describe('buildCellPhoneIncident', () => {
 
     expect(result).toMatchSnapshot();
   });
+
+  it('should build a cell phone incident with no numbers values', () => {
+    const cellPhoneIncident: CellPhoneIncident = {
+      latitude: 123,
+      additionalInfo: 'additional info',
+      longitude: 456,
+    };
+
+    const result = buildCellPhoneIncident(cellPhoneIncident);
+
+    expect(result).toMatchSnapshot();
+  });
 });
